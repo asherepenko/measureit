@@ -60,7 +60,6 @@
         <item name="shapeAppearanceLargeComponent">@style/Base.Theme.App.ShapeAppearance.LargeComponent</item>
 
         <item name="toolbarStyle">@style/Base.Theme.App.Widget.Toolbar</item>
-        <item name="cardViewStyle">@style/Base.Theme.App.Widget.CardView</item>
         <item name="android:progressBarStyle">@style/Base.Theme.App.Widget.ProgressBar</item>
     </style>
 
@@ -141,11 +140,6 @@
         <item name="contentInsetStart">@dimen/toolbar_content_inset_start</item>
     </style>
 
-    <style name="Base.Theme.App.Widget.CardView" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
-        <item name="cardElevation">@dimen/card_elevation</item>
-    </style>
-
     <style name="Base.Theme.App.Widget.ProgressBar" parent="Widget.AppCompat.ProgressBar">
         <item name="android:indeterminate">true</item>
     </style>
@@ -154,7 +148,7 @@
     <style name="Base.Theme.App.TextAppearance.CardTitle" parent="Base.Theme.App.TextAppearance.Subtitle1">
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">@dimen/card_title_font_size</item>
+        <item name="android:textSize">@dimen/dashboard_card_title_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.CardSubtitle" parent="Base.Theme.App.TextAppearance.Body2">

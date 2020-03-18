@@ -17,9 +17,7 @@
     <dimen name="content_guideline_top">@dimen/default_margin_vertical</dimen>
     <dimen name="content_guideline_bottom">@dimen/default_margin_vertical</dimen>
 
-    <dimen name="card_corner_radius">16dp</dimen>
-    <dimen name="card_elevation">4dp</dimen>
-    <dimen name="card_title_font_size">18sp</dimen>
+    <dimen name="dashboard_card_title_font_size">18sp</dimen>
 
     <dimen name="dashboard_card_content_margin_horizontal">@dimen/default_margin_horizontal</dimen>
     <dimen name="dashboard_card_content_margin_top">12dp</dimen>
