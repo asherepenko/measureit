@@ -16,8 +16,6 @@ jobs:
           name: Setup Environment
           command: |
             gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "app/google-services.json" --decrypt "app/google-services.json.gpg"
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "upload-keystore.jks" --decrypt "upload-keystore.jks.gpg"
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "publish-key.json" --decrypt "publish-key.json.gpg"
       - restore_cache:
           key: dependency-cache-{{ checksum "build.gradle.kts" }}-{{ checksum "app/build.gradle.kts" }}
       - run:
