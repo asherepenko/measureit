@@ -33,11 +33,14 @@ jobs:
       - run:
           name: Build Debug APK
           command: ./gradlew assembleDebug --stacktrace
+      - run:
+          name: Build Release APK
+          command: ./gradlew assembleRelease --stacktrace
       - store_artifacts:
           path: app/build/reports
           destination: reports
       - store_artifacts:
-          path: app/build/outputs/apk/debug
+          path: app/build/outputs/apk
           destination: apk
       - store_test_results:
           path: app/build/test-results
@@ -57,8 +60,6 @@ jobs:
           name: Setup Environment
           command: |
             gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "app/google-services.json" --decrypt "app/google-services.json.gpg"
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "upload-keystore.jks" --decrypt "upload-keystore.jks.gpg"
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "publish-key.json" --decrypt "publish-key.json.gpg"
       - restore_cache:
           key: dependency-cache-{{ checksum "build.gradle.kts" }}-{{ checksum "app/build.gradle.kts" }}
       - run:
@@ -70,41 +71,12 @@ jobs:
             git commit -a -m "Set next dev version [ci skip]"
             git push
 
-  deploy:
-    executor: android/android
-
-    environment:
-      JVM_OPTS: -Xmx3200m
-
-    steps:
-      - checkout
-      - run:
-          name: Setup Environment
-          command: |
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "app/google-services.json" --decrypt "app/google-services.json.gpg"
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "upload-keystore.jks" --decrypt "upload-keystore.jks.gpg"
-            gpg --passphrase $GPG_KEY --pinentry-mode loopback --output "publish-key.json" --decrypt "publish-key.json.gpg"
-      - restore_cache:
-          key: dependency-cache-{{ checksum "build.gradle.kts" }}-{{ checksum "app/build.gradle.kts" }}
-      - run:
-          name: Prepare Release Bundle
-          command: ./gradlew bundleRelease --stacktrace
-      - run:
-          name: Upload to Google Play
-          command: ./gradlew publishBundle --stacktrace
-
 workflows:
   version: 2
-  build-and-deploy:
+  build-and-increment:
     jobs:
       - build
       - increment:
-          requires:
-            - build
-          filters:
-            branches:
-              only: develop
-      - deploy:
           requires:
             - build
           filters:
