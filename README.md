@@ -19,5 +19,9 @@ Rx-powered analytics dashboard example.
 ### User Interface
 
 <p align="center">
+    <img src="images/loading-screen.png" width="400px" />
+</p>
+
+<p align="center">
     <img src="images/dashboard-screen.png" width="400px" />
 </p>
