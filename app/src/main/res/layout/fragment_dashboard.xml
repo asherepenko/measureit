@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+    <!-- Content guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/contentStartGuideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/content_guideline_start" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/contentEndGuideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/content_guideline_end" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/contentBottomGuideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/content_guideline_bottom" />
+
+    <androidx.constraintlayout.widget.Group
+            android:id="@+id/dashboardGroup"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="humidityCardView,pressureCardView,temperatureCardView" />
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="@string/app_name"
+            app:subtitle="@string/dashboard_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/humidityCardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_margin_vertical"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintStart_toStartOf="@+id/contentStartGuideline"
+            app:layout_constraintEnd_toEndOf="@+id/contentEndGuideline"
+            app:layout_constraintTop_toBottomOf="@id/toolbarView"
+            app:layout_constraintBottom_toTopOf="@+id/pressureCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/dashboard_card_content_margin_horizontal"
+                android:layout_marginTop="@dimen/dashboard_card_content_margin_top"
+                android:layout_marginBottom="@dimen/dashboard_card_content_margin_bottom">
+
+            <TextView
+                    android:id="@+id/humidityLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/humidity_label"
+                    app:layout_constraintHorizontal_weight="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/humidityMinLabelView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/humidityMinLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dashboard_card_content_item_margin_horizontal"
+                    android:text="@string/min_label"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/humidityLabelView"
+                    app:layout_constraintStart_toEndOf="@+id/humidityLabelView"
+                    app:layout_constraintEnd_toStartOf="@+id/humidityMaxLabelView" />
+
+            <TextView
+                    android:id="@+id/humidityMaxLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/max_label"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/humidityMinLabelView"
+                    app:layout_constraintStart_toEndOf="@+id/humidityMinLabelView"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                    android:id="@+id/humidityValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dashboard_card_content_item_margin_vertical"
+                    android:text="@string/loading"
+                    app:layout_constraintHorizontal_weight="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/humidityMinValueView"
+                    app:layout_constraintTop_toBottomOf="@+id/humidityLabelView"
+                    tools:text="100.00" />
+
+            <TextView
+                    android:id="@+id/humidityMinValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dashboard_card_content_item_margin_horizontal"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/humidityValueView"
+                    app:layout_constraintStart_toEndOf="@+id/humidityValueView"
+                    app:layout_constraintEnd_toStartOf="@+id/humidityMaxValueView"
+                    tools:text="0.00" />
+
+            <TextView
+                    android:id="@+id/humidityMaxValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/humidityMinValueView"
+                    app:layout_constraintStart_toEndOf="@+id/humidityMinValueView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="100.00" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/humidityChartView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/humidityValueView"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ProgressBar
+                    android:id="@+id/humidityLoadingView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/default_margin_horizontal"
+                    android:layout_marginVertical="@dimen/default_margin_vertical"
+                    android:indeterminateTint="@color/colorHumidity"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/humidityLabelView"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/pressureCardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_margin_vertical"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintStart_toStartOf="@+id/contentStartGuideline"
+            app:layout_constraintEnd_toEndOf="@+id/contentEndGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/humidityCardView"
+            app:layout_constraintBottom_toTopOf="@+id/temperatureCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/dashboard_card_content_margin_horizontal"
+                android:layout_marginTop="@dimen/dashboard_card_content_margin_top"
+                android:layout_marginBottom="@dimen/dashboard_card_content_margin_bottom">
+
+            <TextView
+                    android:id="@+id/pressureLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pressure_label"
+                    app:layout_constraintHorizontal_weight="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/pressureMinLabelView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/pressureMinLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dashboard_card_content_item_margin_horizontal"
+                    android:text="@string/min_label"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/pressureLabelView"
+                    app:layout_constraintStart_toEndOf="@+id/pressureLabelView"
+                    app:layout_constraintEnd_toStartOf="@+id/pressureMaxLabelView" />
+
+            <TextView
+                    android:id="@+id/pressureMaxLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/max_label"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/pressureMinLabelView"
+                    app:layout_constraintStart_toEndOf="@+id/pressureMinLabelView"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                    android:id="@+id/pressureValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dashboard_card_content_item_margin_vertical"
+                    android:text="@string/loading"
+                    app:layout_constraintHorizontal_weight="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/pressureMinValueView"
+                    app:layout_constraintTop_toBottomOf="@+id/pressureLabelView"
+                    tools:text="100.00" />
+
+            <TextView
+                    android:id="@+id/pressureMinValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dashboard_card_content_item_margin_horizontal"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/pressureValueView"
+                    app:layout_constraintStart_toEndOf="@+id/pressureValueView"
+                    app:layout_constraintEnd_toStartOf="@+id/pressureMaxValueView"
+                    tools:text="0.00" />
+
+            <TextView
+                    android:id="@+id/pressureMaxValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/pressureMinValueView"
+                    app:layout_constraintStart_toEndOf="@+id/pressureMinValueView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="100.00" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/pressureChartView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pressureValueView"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ProgressBar
+                    android:id="@+id/pressureLoadingView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/default_margin_horizontal"
+                    android:layout_marginVertical="@dimen/default_margin_vertical"
+                    android:indeterminateTint="@color/colorPressure"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pressureLabelView"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/temperatureCardView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_margin_vertical"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintStart_toStartOf="@+id/contentStartGuideline"
+            app:layout_constraintEnd_toEndOf="@+id/contentEndGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/pressureCardView"
+            app:layout_constraintBottom_toBottomOf="@+id/contentBottomGuideline">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/dashboard_card_content_margin_horizontal"
+                android:layout_marginTop="@dimen/dashboard_card_content_margin_top"
+                android:layout_marginBottom="@dimen/dashboard_card_content_margin_bottom">
+
+            <TextView
+                    android:id="@+id/temperatureLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temperature_label"
+                    app:layout_constraintHorizontal_weight="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/temperatureMinLabelView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/temperatureMinLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dashboard_card_content_item_margin_horizontal"
+                    android:text="@string/min_label"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/temperatureLabelView"
+                    app:layout_constraintStart_toEndOf="@+id/temperatureLabelView"
+                    app:layout_constraintEnd_toStartOf="@+id/temperatureMaxLabelView" />
+
+            <TextView
+                    android:id="@+id/temperatureMaxLabelView"
+                    style="@style/Base.Theme.App.TextAppearance.CardSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/max_label"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/temperatureMinLabelView"
+                    app:layout_constraintStart_toEndOf="@+id/temperatureMinLabelView"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                    android:id="@+id/temperatureValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dashboard_card_content_item_margin_vertical"
+                    android:text="@string/loading"
+                    app:layout_constraintHorizontal_weight="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/temperatureMinValueView"
+                    app:layout_constraintTop_toBottomOf="@+id/temperatureLabelView"
+                    tools:text="100" />
+
+            <TextView
+                    android:id="@+id/temperatureMinValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dashboard_card_content_item_margin_horizontal"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/temperatureValueView"
+                    app:layout_constraintStart_toEndOf="@+id/temperatureValueView"
+                    app:layout_constraintEnd_toStartOf="@+id/temperatureMaxValueView"
+                    tools:text="0.00" />
+
+            <TextView
+                    android:id="@+id/temperatureMaxValueView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintHorizontal_weight="0.2"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/temperatureMinValueView"
+                    app:layout_constraintStart_toEndOf="@+id/temperatureMinValueView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="100.00" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/temperatureChartView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/temperatureValueView"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ProgressBar
+                    android:id="@+id/temperatureLoadingView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/default_margin_horizontal"
+                    android:layout_marginVertical="@dimen/default_margin_vertical"
+                    android:indeterminateTint="@color/colorTemperature"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/temperatureLabelView"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

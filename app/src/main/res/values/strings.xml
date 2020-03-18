@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">Measure It</string>
+
+    <string name="dashboard_title">Dashboard</string>
+
+    <string name="humidity_label">Humidity, %</string>
+    <string name="pressure_label">Pressure, Bar</string>
+    <string name="temperature_label">Temperature, °C</string>
+
+    <string name="min_label">Min.</string>
+    <string name="max_label">Max.</string>
+
+    <string name="formatted_value">%1$.2f</string>
+    <string name="unknown_value">N/A</string>
+
+    <string name="loading">Loading&#8230;</string>
+</resources>

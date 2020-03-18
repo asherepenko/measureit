@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fafafa</color>
+    <color name="colorPrimaryVariant">#f5f5f5</color>
+    <color name="colorOnPrimary">#de212121</color>
+
+    <color name="colorSecondary">#ff0267</color>
+    <color name="colorSecondaryVariant">#d70060</color>
+    <color name="colorOnSecondary">#fafafa</color>
+
+    <color name="colorError">#e4001e</color>
+    <color name="colorOnError">#fafafa</color>
+
+    <color name="colorSurface">#fafafa</color>
+    <color name="colorOnSurface">#de212121</color>
+
+    <color name="colorBackground">#f5f5f5</color>
+    <color name="colorOnBackground">#de212121</color>
+
+    <color name="textColorPrimary">#de212121</color>
+    <color name="textColorSecondary">#99212121</color>
+
+    <color name="colorSuccess">#09af00</color>
+
+    <color name="colorGrid">#e0e0e0</color>
+
+    <color name="colorHumidity">#fa8100</color>
+    <color name="colorPressure">#2196f3</color>
+    <color name="colorTemperature">#ff0267</color>
+
+</resources>
