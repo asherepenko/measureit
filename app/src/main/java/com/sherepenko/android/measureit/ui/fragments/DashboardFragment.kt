@@ -1,8 +1,5 @@
 package com.sherepenko.android.measureit.ui.fragments
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -182,16 +179,6 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             maxHumidityValue = item.value
             humidityMaxValueView.apply {
                 text = getString(R.string.formatted_value, maxHumidityValue)
-
-                ObjectAnimator.ofPropertyValuesHolder(
-                    this@apply,
-                    PropertyValuesHolder.ofFloat(View.SCALE_X, 1.1f),
-                    PropertyValuesHolder.ofFloat(View.SCALE_X, 1.1f)
-                ).apply {
-                    repeatCount = 1
-                    repeatMode = ValueAnimator.REVERSE
-                    duration = 300
-                }.start()
             }
         }
     }
