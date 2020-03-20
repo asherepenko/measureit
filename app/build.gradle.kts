@@ -6,6 +6,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     id("com.android.application")
+    id("com.github.triplet.play") version "2.7.2"
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     kotlin("android")
     kotlin("android.extensions")
@@ -16,6 +17,7 @@ val archivesBaseName = "measureit"
 val buildVersion = BuildVersion(rootProject.file("version"))
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
+val playstorePropertiesFile = rootProject.file("playstore.properties")
 
 android {
     compileSdkVersion(29)
@@ -100,6 +102,30 @@ ktlint {
     reporters {
         reporter(ReporterType.PLAIN)
         reporter(ReporterType.CHECKSTYLE)
+    }
+}
+
+play {
+    if (playstorePropertiesFile.exists()) {
+        val playstoreProperties = Properties().apply {
+            load(FileInputStream(playstorePropertiesFile))
+        }
+
+        serviceAccountCredentials = rootProject.file(
+            playstoreProperties.getProperty("playstore.credentials")
+        )
+        defaultToAppBundles = true
+        track = "alpha"
+        releaseStatus = "draft"
+    } else if (!System.getenv("PLAYSTORE_CREDENTIALS").isNullOrEmpty()) {
+        serviceAccountCredentials = rootProject.file(
+            System.getenv("PLAYSTORE_CREDENTIALS")
+        )
+        defaultToAppBundles = true
+        track = "alpha"
+        releaseStatus = "draft"
+    } else {
+        isEnabled = false
     }
 }
 
