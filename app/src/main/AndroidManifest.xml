@@ -4,8 +4,7 @@
         package="com.sherepenko.android.measureit">
 
     <supports-screens
-            android:smallScreens="false"
-            android:requiresSmallestWidthDp="480" />
+            android:smallScreens="false" />
 
     <application
             android:name=".AnalyticsApp"

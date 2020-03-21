@@ -17,6 +17,8 @@
     <dimen name="medium_component_corner_size">16dp</dimen>
     <dimen name="large_component_corner_size">20dp</dimen>
 
+    <dimen name="default_margin_vertical">8dp</dimen>
+
     <dimen name="dashboard_card_title_font_size">18sp</dimen>
 
     <dimen name="dashboard_card_content_margin_top">12dp</dimen>
