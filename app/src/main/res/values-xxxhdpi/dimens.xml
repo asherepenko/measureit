@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_margin_vertical">16dp</dimen>
+
+    <item format="float" name="dashboard_chart_font_size" type="dimen">11.0</item>
+</resources>
