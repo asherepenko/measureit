@@ -3,6 +3,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.sherepenko.android.measureit">
 
+    <supports-screens
+            android:smallScreens="false"
+            android:requiresSmallestWidthDp="480" />
+
     <application
             android:name=".AnalyticsApp"
             android:label="@string/app_name"

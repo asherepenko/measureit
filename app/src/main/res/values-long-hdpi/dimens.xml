@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headline1_font_size">72sp</dimen>
+    <dimen name="headline2_font_size">48sp</dimen>
+    <dimen name="headline3_font_size">36sp</dimen>
+    <dimen name="headline4_font_size">26sp</dimen>
+    <dimen name="headline5_font_size">20sp</dimen>
+    <dimen name="headline6_font_size">18sp</dimen>
+
+    <dimen name="subtitle1_font_size">14sp</dimen>
+    <dimen name="subtitle2_font_size">12sp</dimen>
+
+    <dimen name="body1_font_size">14sp</dimen>
+    <dimen name="body2_font_size">12sp</dimen>
+
+    <dimen name="button_font_size">14sp</dimen>
+
+    <dimen name="caption_font_size">12sp</dimen>
+
+    <dimen name="overline_font_size">10sp</dimen>
+
+    <dimen name="small_component_corner_size">4dp</dimen>
+    <dimen name="medium_component_corner_size">8dp</dimen>
+    <dimen name="large_component_corner_size">16dp</dimen>
+
+    <dimen name="default_margin_horizontal">16dp</dimen>
+    <dimen name="default_margin_vertical">8dp</dimen>
+
+    <dimen name="toolbar_content_inset_start">32dp</dimen>
+
+    <dimen name="content_guideline_start">@dimen/default_margin_horizontal</dimen>
+    <dimen name="content_guideline_end">@dimen/default_margin_horizontal</dimen>
+    <dimen name="content_guideline_top">@dimen/default_margin_vertical</dimen>
+    <dimen name="content_guideline_bottom">@dimen/default_margin_vertical</dimen>
+
+    <dimen name="dashboard_card_title_font_size">16sp</dimen>
+
+    <dimen name="dashboard_card_content_margin_horizontal">@dimen/default_margin_horizontal</dimen>
+    <dimen name="dashboard_card_content_margin_top">8dp</dimen>
+    <dimen name="dashboard_card_content_margin_bottom">0dp</dimen>
+
+    <dimen name="dashboard_card_content_item_margin_horizontal">8dp</dimen>
+    <dimen name="dashboard_card_content_item_margin_vertical">4dp</dimen>
+    
+    <item format="float" name="dashboard_chart_font_size" type="dimen">8.5</item>
+
+</resources>

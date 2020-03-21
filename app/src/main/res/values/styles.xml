@@ -66,56 +66,69 @@
     <!-- Headlines -->
     <style name="Base.Theme.App.TextAppearance.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/headline1_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/headline2_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/headline3_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/headline4_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/headline5_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/headline6_font_size</item>
     </style>
 
     <!-- Subtitles -->
     <style name="Base.Theme.App.TextAppearance.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/subtitle1_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
-        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/subtitle2_font_size</item>
     </style>
 
     <!-- Body -->
     <style name="Base.Theme.App.TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/body1_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textSize">@dimen/body2_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/button_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/caption_font_size</item>
     </style>
 
     <style name="Base.Theme.App.TextAppearance.Overline" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textSize">@dimen/overline_font_size</item>
     </style>
 
     <!-- Shapes -->
