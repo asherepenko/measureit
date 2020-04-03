@@ -129,9 +129,9 @@ play {
     }
 }
 
-val koinVersion = "2.1.3"
+val koinVersion = "2.1.5"
 val lifecycleVersion = "2.2.0"
-val roomVersion = "2.2.3"
+val roomVersion = "2.2.5"
 
 dependencies {
     kapt("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
@@ -141,7 +141,7 @@ dependencies {
     implementation("androidx.collection:collection-ktx:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta4")
     implementation("androidx.core:core-ktx:1.2.0")
-    implementation("androidx.fragment:fragment-ktx:1.2.3")
+    implementation("androidx.fragment:fragment-ktx:1.2.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
@@ -151,13 +151,13 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.google.android.material:material:1.2.0-alpha05")
-    implementation("com.google.firebase:firebase-analytics:17.2.3")
-    implementation("com.google.firebase:firebase-crashlytics:17.0.0-beta02")
+    implementation("com.google.firebase:firebase-analytics:17.3.0")
+    implementation("com.google.firebase:firebase-crashlytics:17.0.0-beta03")
     implementation("com.google.firebase:firebase-perf:19.0.5")
     implementation("com.jakewharton.threetenabp:threetenabp:1.2.2")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
-    implementation("io.reactivex.rxjava3:rxjava:3.0.0")
-    implementation("io.reactivex.rxjava3:rxkotlin:3.0.0-RC1")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.1")
+    implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
     implementation("com.jakewharton.timber:timber:4.7.1")
     implementation("org.koin:koin-androidx-ext:$koinVersion")
     implementation("org.koin:koin-androidx-scope:$koinVersion")
