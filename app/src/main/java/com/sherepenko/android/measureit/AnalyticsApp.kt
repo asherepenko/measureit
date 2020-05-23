@@ -102,7 +102,7 @@ class AnalyticsApp : Application() {
                 return@setErrorHandler
             }
 
-            Timber.w(error)
+            Timber.w(error, "Undeliverable exception caught")
         }
     }
 
