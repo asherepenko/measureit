@@ -34,6 +34,11 @@ android {
         setProperty("archivesBaseName", "$archivesBaseName-$versionName")
     }
 
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -139,8 +144,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.collection:collection-ktx:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta5")
-    implementation("androidx.core:core-ktx:1.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta6")
+    implementation("androidx.core:core-ktx:1.3.0")
     implementation("androidx.fragment:fragment-ktx:1.2.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
@@ -150,8 +155,8 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.google.android.material:material:1.2.0-alpha06")
-    implementation("com.google.firebase:firebase-analytics:17.4.1")
+    implementation("com.google.android.material:material:1.2.0-beta01")
+    implementation("com.google.firebase:firebase-analytics:17.4.2")
     implementation("com.google.firebase:firebase-crashlytics:17.0.0")
     implementation("com.google.firebase:firebase-perf:19.0.7")
     implementation("com.jakewharton.threetenabp:threetenabp:1.2.2")
