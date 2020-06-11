@@ -6,7 +6,8 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     id("com.android.application")
-    id("com.github.triplet.play") version "2.7.2"
+    id("com.github.triplet.play") version "2.8.0"
+    id("com.sherepenko.gradle.plugin-build-version") version "0.1.5"
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     kotlin("android")
     kotlin("android.extensions")
@@ -14,7 +15,6 @@ plugins {
 }
 
 val archivesBaseName = "measureit"
-val buildVersion = BuildVersion(rootProject.file("version"))
 
 val keystorePropertiesFile = rootProject.file("keystore.properties")
 val playstorePropertiesFile = rootProject.file("playstore.properties")
@@ -134,7 +134,7 @@ play {
     }
 }
 
-val koinVersion = "2.1.5"
+val koinVersion = "2.1.6"
 val lifecycleVersion = "2.2.0"
 val roomVersion = "2.2.5"
 
@@ -155,9 +155,9 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.google.android.material:material:1.2.0-beta01")
-    implementation("com.google.firebase:firebase-analytics:17.4.2")
-    implementation("com.google.firebase:firebase-crashlytics:17.0.0")
+    implementation("com.google.android.material:material:1.3.0-alpha01")
+    implementation("com.google.firebase:firebase-analytics:17.4.3")
+    implementation("com.google.firebase:firebase-crashlytics:17.0.1")
     implementation("com.google.firebase:firebase-perf:19.0.7")
     implementation("com.jakewharton.threetenabp:threetenabp:1.2.2")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
@@ -171,7 +171,7 @@ dependencies {
     testImplementation("androidx.test:core:1.2.0")
     testImplementation("androidx.test:runner:1.2.0")
     testImplementation("androidx.test.ext:junit:1.1.1")
-    testImplementation("com.google.truth:truth:0.44")
+    testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("org.koin:koin-test:$koinVersion")
     testImplementation("org.robolectric:robolectric:4.3.1")
@@ -182,21 +182,6 @@ tasks {
         kotlinOptions {
             jvmTarget = "1.8"
         }
-    }
-
-    val incrementMajor by registering(IncrementVersion::class) {
-        increment = Increment.MAJOR
-        version = buildVersion
-    }
-
-    val incrementMinor by registering(IncrementVersion::class) {
-        increment = Increment.MINOR
-        version = buildVersion
-    }
-
-    val incrementPatch by registering(IncrementVersion::class) {
-        increment = Increment.PATCH
-        version = buildVersion
     }
 }
 
