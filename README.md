@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![CircleCI](https://circleci.com/gh/asherepenko/measureit.svg?style=svg&circle-token=e000a655bfe54a5b6ccdd4926a250a295e7a54dd)](https://circleci.com/gh/asherepenko/measureit)
+[![Latest Version](https://img.shields.io/github/v/tag/asherepenko/measureit?sort=date)](https://github.com/asherepenko/measureit/releases)
 
 *Rx-powered analytics dashboard example*
 
