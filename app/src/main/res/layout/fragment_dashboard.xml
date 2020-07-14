@@ -35,7 +35,7 @@
             android:layout_height="0dp"
             app:constraint_referenced_ids="humidityCardView,pressureCardView,temperatureCardView" />
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

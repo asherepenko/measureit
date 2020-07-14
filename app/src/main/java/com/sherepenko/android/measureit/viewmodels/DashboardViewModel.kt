@@ -11,9 +11,9 @@ import com.sherepenko.android.measureit.repositories.HumidityRepository
 import com.sherepenko.android.measureit.repositories.PressureRepository
 import com.sherepenko.android.measureit.repositories.TemperatureRepository
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.kotlin.addTo
+import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
-import io.reactivex.rxkotlin3.addTo
-import io.reactivex.rxkotlin3.subscribeBy
 
 class DashboardViewModel(
     private val humidityRepository: HumidityRepository,
