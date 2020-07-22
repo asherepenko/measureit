@@ -1,7 +1,6 @@
 import java.io.FileInputStream
 import java.util.Properties
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
@@ -42,6 +41,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     lintOptions {
@@ -158,7 +161,7 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0-alpha01")
     implementation("com.google.firebase:firebase-analytics:17.4.4")
     implementation("com.google.firebase:firebase-crashlytics:17.1.1")
-    implementation("com.google.firebase:firebase-perf:19.0.7")
+    implementation("com.google.firebase:firebase-perf:19.0.8")
     implementation("com.jakewharton.threetenabp:threetenabp:1.2.2")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxjava:3.0.1")
@@ -175,14 +178,6 @@ dependencies {
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("org.koin:koin-test:$koinVersion")
     testImplementation("org.robolectric:robolectric:4.3.1")
-}
-
-tasks {
-    withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
-    }
 }
 
 apply(plugin = "com.google.gms.google-services")
