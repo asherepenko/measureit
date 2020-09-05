@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.Observer
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -16,6 +15,7 @@ import com.sherepenko.android.measureit.data.Status
 import com.sherepenko.android.measureit.data.TemperatureItem
 import com.sherepenko.android.measureit.data.isNullOrEmpty
 import com.sherepenko.android.measureit.viewmodels.DashboardViewModel
+import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlinx.android.synthetic.main.fragment_dashboard.humidityChartView
 import kotlinx.android.synthetic.main.fragment_dashboard.humidityLoadingView
@@ -34,7 +34,6 @@ import kotlinx.android.synthetic.main.fragment_dashboard.temperatureMinValueView
 import kotlinx.android.synthetic.main.fragment_dashboard.temperatureValueView
 import kotlinx.android.synthetic.main.fragment_dashboard.toolbarView
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.threeten.bp.Instant
 
 class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
@@ -79,7 +78,7 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             )
         )
 
-        dashboardViewModel.getHumidity().observe(viewLifecycleOwner, Observer {
+        dashboardViewModel.getHumidity().observe(viewLifecycleOwner, {
             when (it.status) {
                 Status.LOADING -> {
                     // ignore
@@ -103,7 +102,7 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             )
         )
 
-        dashboardViewModel.getPressure().observe(viewLifecycleOwner, Observer {
+        dashboardViewModel.getPressure().observe(viewLifecycleOwner, {
             when (it.status) {
                 Status.LOADING -> {
                     // ignore
@@ -127,7 +126,7 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             )
         )
 
-        dashboardViewModel.getTemperature().observe(viewLifecycleOwner, Observer {
+        dashboardViewModel.getTemperature().observe(viewLifecycleOwner, {
             when (it.status) {
                 Status.LOADING -> {
                     // ignore
