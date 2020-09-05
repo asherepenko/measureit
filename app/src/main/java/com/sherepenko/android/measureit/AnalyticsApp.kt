@@ -3,7 +3,6 @@ package com.sherepenko.android.measureit
 import android.app.Application
 import android.util.Log
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.sherepenko.android.measureit.providers.HumidityDataSourceImpl
 import com.sherepenko.android.measureit.providers.PressureDataSourceImpl
 import com.sherepenko.android.measureit.providers.TemperatureDataSourceImpl
@@ -61,9 +60,6 @@ class AnalyticsApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        AndroidThreeTen.init(this@AnalyticsApp)
-
         setupTimber()
         setupRx()
         setupKoin()
