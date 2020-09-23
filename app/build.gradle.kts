@@ -7,7 +7,7 @@ plugins {
     id("com.android.application")
     id("com.github.triplet.play") version "2.8.0"
     id("com.sherepenko.gradle.plugin-build-version") version "0.2.1"
-    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")

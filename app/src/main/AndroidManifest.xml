@@ -3,6 +3,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         package="com.sherepenko.android.measureit">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.alarm.permission.WAKE_LOCK" />
+
     <supports-screens
             android:smallScreens="false" />
 

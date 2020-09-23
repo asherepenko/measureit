@@ -78,20 +78,23 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             )
         )
 
-        dashboardViewModel.getHumidity().observe(viewLifecycleOwner, {
-            when (it.status) {
-                Status.LOADING -> {
-                    // ignore
-                }
-                Status.SUCCESS -> {
-                    checkNotNull(it.data)
-                    updateHumidity(it.data)
-                }
-                Status.ERROR -> {
-                    updateHumidity(it.data)
+        dashboardViewModel.getHumidity().observe(
+            viewLifecycleOwner,
+            {
+                when (it.status) {
+                    Status.LOADING -> {
+                        // ignore
+                    }
+                    Status.SUCCESS -> {
+                        checkNotNull(it.data)
+                        updateHumidity(it.data)
+                    }
+                    Status.ERROR -> {
+                        updateHumidity(it.data)
+                    }
                 }
             }
-        })
+        )
     }
 
     private fun setupPressure() {
@@ -102,20 +105,23 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             )
         )
 
-        dashboardViewModel.getPressure().observe(viewLifecycleOwner, {
-            when (it.status) {
-                Status.LOADING -> {
-                    // ignore
-                }
-                Status.SUCCESS -> {
-                    checkNotNull(it.data)
-                    updatePressure(it.data)
-                }
-                Status.ERROR -> {
-                    updatePressure(it.data)
+        dashboardViewModel.getPressure().observe(
+            viewLifecycleOwner,
+            {
+                when (it.status) {
+                    Status.LOADING -> {
+                        // ignore
+                    }
+                    Status.SUCCESS -> {
+                        checkNotNull(it.data)
+                        updatePressure(it.data)
+                    }
+                    Status.ERROR -> {
+                        updatePressure(it.data)
+                    }
                 }
             }
-        })
+        )
     }
 
     private fun setupTemperature() {
@@ -126,20 +132,23 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             )
         )
 
-        dashboardViewModel.getTemperature().observe(viewLifecycleOwner, {
-            when (it.status) {
-                Status.LOADING -> {
-                    // ignore
-                }
-                Status.SUCCESS -> {
-                    checkNotNull(it.data)
-                    updateTemperature(it.data)
-                }
-                Status.ERROR -> {
-                    updateTemperature(it.data)
+        dashboardViewModel.getTemperature().observe(
+            viewLifecycleOwner,
+            {
+                when (it.status) {
+                    Status.LOADING -> {
+                        // ignore
+                    }
+                    Status.SUCCESS -> {
+                        checkNotNull(it.data)
+                        updateTemperature(it.data)
+                    }
+                    Status.ERROR -> {
+                        updateTemperature(it.data)
+                    }
                 }
             }
-        })
+        )
     }
 
     private fun updateHumidity(item: HumidityItem?) {

@@ -3,6 +3,7 @@ package com.sherepenko.android.measureit.ui.activities
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import com.google.firebase.analytics.FirebaseAnalytics
 
 abstract class BaseActivity(@LayoutRes private val contentLayoutRes: Int) : AppCompatActivity() {
@@ -19,6 +20,12 @@ abstract class BaseActivity(@LayoutRes private val contentLayoutRes: Int) : AppC
 
     private fun setCurrentScreen() {
         FirebaseAnalytics.getInstance(this@BaseActivity)
-            .setCurrentScreen(this@BaseActivity, javaClass.simpleName, null)
+            .logEvent(
+                FirebaseAnalytics.Event.SCREEN_VIEW,
+                bundleOf(
+                    FirebaseAnalytics.Param.SCREEN_NAME to javaClass.simpleName,
+                    FirebaseAnalytics.Param.SCREEN_CLASS to javaClass.canonicalName
+                )
+            )
     }
 }
