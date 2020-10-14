@@ -39,7 +39,7 @@ android {
     }
 
     compileOptions {
-        coreLibraryDesugaringEnabled = true
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -138,7 +138,7 @@ play {
     }
 }
 
-val koinVersion = "2.1.6"
+val koinVersion = "2.2.0-rc-2"
 val lifecycleVersion = "2.2.0"
 val roomVersion = "2.2.5"
 
@@ -149,8 +149,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.collection:collection-ktx:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
-    implementation("androidx.core:core-ktx:1.3.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
@@ -160,10 +160,10 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.google.android.material:material:1.3.0-alpha02")
-    implementation("com.google.firebase:firebase-analytics:17.5.0")
-    implementation("com.google.firebase:firebase-crashlytics:17.2.1")
-    implementation("com.google.firebase:firebase-perf:19.0.8")
+    implementation("com.google.android.material:material:1.3.0-alpha03")
+    implementation("com.google.firebase:firebase-analytics:17.6.0")
+    implementation("com.google.firebase:firebase-crashlytics:17.2.2")
+    implementation("com.google.firebase:firebase-perf:19.0.9")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxjava:3.0.1")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
@@ -178,7 +178,7 @@ dependencies {
     testImplementation("com.google.truth:truth:1.0.1")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("org.koin:koin-test:$koinVersion")
-    testImplementation("org.robolectric:robolectric:4.3.1")
+    testImplementation("org.robolectric:robolectric:4.4")
 }
 
 apply(plugin = "com.google.gms.google-services")
