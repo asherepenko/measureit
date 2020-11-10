@@ -40,9 +40,7 @@ class PressureDataSourceImpl : PressureDataSource {
                     .tag(TAG)
                     .d("New item ${it.value()} emitted after ${it.time()} ms")
             }
-            .map {
-                it.value()
-            }
+            .map { it.value() }
             .onBackpressureDrop()
             .repeat()
 }
