@@ -28,12 +28,11 @@ class TemperatureDataSourceImpl : TemperatureDataSource {
     }
 
     override fun getTemperature(): Flowable<TemperatureItem> =
-        Flowable
-            .defer {
-                Flowable.just(nextItem())
-                    .delay(nextDelay(), TimeUnit.MILLISECONDS)
-                    .timeout(MAX_DELAY_THRESHOLD_MS, TimeUnit.MILLISECONDS)
-            }
+        Flowable.defer {
+            Flowable.just(nextItem())
+                .delay(nextDelay(), TimeUnit.MILLISECONDS)
+                .timeout(MAX_DELAY_THRESHOLD_MS, TimeUnit.MILLISECONDS)
+        }
             .onErrorResumeWith(Flowable.just(TemperatureItem.empty()))
             .timeInterval(TimeUnit.MILLISECONDS)
             .doOnNext {

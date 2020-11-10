@@ -28,12 +28,11 @@ class HumidityDataSourceImpl : HumidityDataSource {
     }
 
     override fun getHumidity(): Flowable<HumidityItem> =
-        Flowable
-            .defer {
-                Flowable.just(nextItem())
-                    .delay(nextDelay(), TimeUnit.MILLISECONDS)
-                    .timeout(MAX_DELAY_THRESHOLD_MS, TimeUnit.MILLISECONDS)
-            }
+        Flowable.defer {
+            Flowable.just(nextItem())
+                .delay(nextDelay(), TimeUnit.MILLISECONDS)
+                .timeout(MAX_DELAY_THRESHOLD_MS, TimeUnit.MILLISECONDS)
+        }
             .onErrorResumeWith(Flowable.just(HumidityItem.empty()))
             .timeInterval(TimeUnit.MILLISECONDS)
             .doOnNext {
