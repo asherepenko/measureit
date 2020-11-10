@@ -139,18 +139,18 @@ play {
     }
 }
 
-val koinVersion = "2.2.0-rc-2"
+val koinVersion = "2.2.0-rc-4"
 val lifecycleVersion = "2.2.0"
 val roomVersion = "2.2.5"
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.0.10")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.0")
     kapt("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.collection:collection-ktx:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
@@ -162,8 +162,8 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.google.android.material:material:1.3.0-alpha03")
-    implementation("com.google.firebase:firebase-analytics:17.6.0")
-    implementation("com.google.firebase:firebase-crashlytics:17.2.2")
+    implementation("com.google.firebase:firebase-analytics-ktx:18.0.0")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:17.2.2")
     implementation("com.google.firebase:firebase-perf:19.0.9")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxjava:3.0.1")

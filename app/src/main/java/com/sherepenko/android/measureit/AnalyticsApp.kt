@@ -2,7 +2,8 @@ package com.sherepenko.android.measureit
 
 import android.app.Application
 import android.util.Log
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import com.sherepenko.android.measureit.providers.HumidityDataSourceImpl
 import com.sherepenko.android.measureit.providers.PressureDataSourceImpl
 import com.sherepenko.android.measureit.providers.TemperatureDataSourceImpl
@@ -62,7 +63,7 @@ class AnalyticsApp : Application() {
     override fun onCreate() {
         super.onCreate()
         setupTimber()
-        setupRx()
+        setupRxJava()
         setupKoin()
     }
 
@@ -74,7 +75,7 @@ class AnalyticsApp : Application() {
         }
     }
 
-    private fun setupRx() {
+    private fun setupRxJava() {
         RxJavaPlugins.setErrorHandler { e ->
             var error = e
 
@@ -122,7 +123,7 @@ internal class CrashlyticsTree : Timber.Tree() {
         priority == Log.WARN || priority == Log.ERROR || priority == Log.ASSERT
 
     override fun log(priority: Int, tag: String?, message: String, throwable: Throwable?) {
-        FirebaseCrashlytics.getInstance().apply {
+        Firebase.crashlytics.apply {
             log(message)
 
             throwable?.let {

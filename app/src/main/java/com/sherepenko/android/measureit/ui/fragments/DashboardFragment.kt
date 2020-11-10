@@ -34,7 +34,9 @@ import kotlinx.android.synthetic.main.fragment_dashboard.temperatureMinValueView
 import kotlinx.android.synthetic.main.fragment_dashboard.temperatureValueView
 import kotlinx.android.synthetic.main.fragment_dashboard.toolbarView
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinApiExtension
 
+@KoinApiExtension
 class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     companion object {
