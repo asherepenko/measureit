@@ -16,7 +16,7 @@ data class TemperatureItem(
 }
 
 fun TemperatureItem.isEmpty(): Boolean =
-    this@isEmpty.value.isNaN()
+    value.isNaN()
 
 fun TemperatureItem?.isNullOrEmpty(): Boolean =
-    this@isNullOrEmpty == null || this@isNullOrEmpty.isEmpty()
+    this == null || isEmpty()

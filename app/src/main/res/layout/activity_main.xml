@@ -6,4 +6,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.sherepenko.android.measureit.ui.fragments.DashboardFragment"
-        tools:ignore="FragmentTagUsage" />
+        tools:ignore="FragmentTagUsage"
+        tools:viewBindingIgnore="true" />

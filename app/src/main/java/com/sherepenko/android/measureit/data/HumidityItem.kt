@@ -16,7 +16,7 @@ data class HumidityItem(
 }
 
 fun HumidityItem.isEmpty(): Boolean =
-    this@isEmpty.value.isNaN()
+    value.isNaN()
 
 fun HumidityItem?.isNullOrEmpty(): Boolean =
-    this@isNullOrEmpty == null || this@isNullOrEmpty.isEmpty()
+    this == null || isEmpty()

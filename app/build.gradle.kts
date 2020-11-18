@@ -8,7 +8,7 @@ plugins {
     id("com.android.application")
     id("com.github.triplet.play") version "3.0.0"
     id("com.sherepenko.gradle.plugin-build-version") version "0.2.3"
-    id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
+    id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
@@ -37,6 +37,10 @@ android {
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -139,12 +143,12 @@ play {
     }
 }
 
-val koinVersion = "2.2.0-rc-4"
+val koinVersion = "2.2.1"
 val lifecycleVersion = "2.2.0"
 val roomVersion = "2.2.5"
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.0")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
     kapt("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
@@ -163,11 +167,11 @@ dependencies {
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.google.android.material:material:1.3.0-alpha03")
     implementation("com.google.firebase:firebase-analytics-ktx:18.0.0")
-    implementation("com.google.firebase:firebase-crashlytics-ktx:17.2.2")
-    implementation("com.google.firebase:firebase-perf:19.0.9")
+    implementation("com.google.firebase:firebase-crashlytics-ktx:17.3.0")
+    implementation("com.google.firebase:firebase-perf:19.0.10")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
-    implementation("io.reactivex.rxjava3:rxjava:3.0.1")
-    implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.7")
+    implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
     implementation("com.jakewharton.timber:timber:4.7.1")
     implementation("org.koin:koin-androidx-ext:$koinVersion")
     implementation("org.koin:koin-androidx-scope:$koinVersion")

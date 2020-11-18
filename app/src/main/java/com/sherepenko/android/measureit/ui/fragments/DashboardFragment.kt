@@ -14,27 +14,13 @@ import com.sherepenko.android.measureit.data.PressureItem
 import com.sherepenko.android.measureit.data.Status
 import com.sherepenko.android.measureit.data.TemperatureItem
 import com.sherepenko.android.measureit.data.isNullOrEmpty
+import com.sherepenko.android.measureit.databinding.FragmentDashboardBinding
 import com.sherepenko.android.measureit.viewmodels.DashboardViewModel
 import java.time.Instant
 import java.util.concurrent.TimeUnit
-import kotlinx.android.synthetic.main.fragment_dashboard.humidityChartView
-import kotlinx.android.synthetic.main.fragment_dashboard.humidityLoadingView
-import kotlinx.android.synthetic.main.fragment_dashboard.humidityMaxValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.humidityMinValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.humidityValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.pressureChartView
-import kotlinx.android.synthetic.main.fragment_dashboard.pressureLoadingView
-import kotlinx.android.synthetic.main.fragment_dashboard.pressureMaxValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.pressureMinValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.pressureValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.temperatureChartView
-import kotlinx.android.synthetic.main.fragment_dashboard.temperatureLoadingView
-import kotlinx.android.synthetic.main.fragment_dashboard.temperatureMaxValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.temperatureMinValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.temperatureValueView
-import kotlinx.android.synthetic.main.fragment_dashboard.toolbarView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.bind
 
 @KoinApiExtension
 class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
@@ -46,6 +32,8 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     private val dashboardViewModel: DashboardViewModel by viewModel()
 
     private val startTime: Long = Instant.now().toEpochMilli()
+
+    private lateinit var binding: FragmentDashboardBinding
 
     private var minHumidityValue = Double.NaN
     private var maxHumidityValue = Double.NaN
@@ -59,6 +47,8 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding = FragmentDashboardBinding.bind(view)
+
         setupToolbar()
 
         setupHumidity()
@@ -68,96 +58,87 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     private fun setupToolbar() {
         if (requireActivity() is AppCompatActivity) {
-            (requireActivity() as AppCompatActivity).setSupportActionBar(toolbarView)
+            (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbarView)
         }
     }
 
     private fun setupHumidity() {
-        humidityChartView.setupChart(
+        binding.humidityChartView.setupChart(
             createDataSet(
                 "Humidity",
                 ResourcesCompat.getColor(resources, R.color.colorHumidity, null)
             )
         )
 
-        dashboardViewModel.getHumidity().observe(
-            viewLifecycleOwner,
-            {
-                when (it.status) {
-                    Status.LOADING -> {
-                        // ignore
-                    }
-                    Status.SUCCESS -> {
-                        checkNotNull(it.data)
-                        updateHumidity(it.data)
-                    }
-                    Status.ERROR -> {
-                        updateHumidity(it.data)
-                    }
+        dashboardViewModel.getHumidity().observe(viewLifecycleOwner) {
+            when (it.status) {
+                Status.LOADING -> {
+                    // ignore
+                }
+                Status.SUCCESS -> {
+                    checkNotNull(it.data)
+                    updateHumidity(it.data)
+                }
+                Status.ERROR -> {
+                    updateHumidity(it.data)
                 }
             }
-        )
+        }
     }
 
     private fun setupPressure() {
-        pressureChartView.setupChart(
+        binding.pressureChartView.setupChart(
             createDataSet(
                 "Pressure",
                 ResourcesCompat.getColor(resources, R.color.colorPressure, null)
             )
         )
 
-        dashboardViewModel.getPressure().observe(
-            viewLifecycleOwner,
-            {
-                when (it.status) {
-                    Status.LOADING -> {
-                        // ignore
-                    }
-                    Status.SUCCESS -> {
-                        checkNotNull(it.data)
-                        updatePressure(it.data)
-                    }
-                    Status.ERROR -> {
-                        updatePressure(it.data)
-                    }
+        dashboardViewModel.getPressure().observe(viewLifecycleOwner) {
+            when (it.status) {
+                Status.LOADING -> {
+                    // ignore
+                }
+                Status.SUCCESS -> {
+                    checkNotNull(it.data)
+                    updatePressure(it.data)
+                }
+                Status.ERROR -> {
+                    updatePressure(it.data)
                 }
             }
-        )
+        }
     }
 
     private fun setupTemperature() {
-        temperatureChartView.setupChart(
+        binding.temperatureChartView.setupChart(
             createDataSet(
                 "Temperature",
                 ResourcesCompat.getColor(resources, R.color.colorTemperature, null)
             )
         )
 
-        dashboardViewModel.getTemperature().observe(
-            viewLifecycleOwner,
-            {
-                when (it.status) {
-                    Status.LOADING -> {
-                        // ignore
-                    }
-                    Status.SUCCESS -> {
-                        checkNotNull(it.data)
-                        updateTemperature(it.data)
-                    }
-                    Status.ERROR -> {
-                        updateTemperature(it.data)
-                    }
+        dashboardViewModel.getTemperature().observe(viewLifecycleOwner) {
+            when (it.status) {
+                Status.LOADING -> {
+                    // ignore
+                }
+                Status.SUCCESS -> {
+                    checkNotNull(it.data)
+                    updateTemperature(it.data)
+                }
+                Status.ERROR -> {
+                    updateTemperature(it.data)
                 }
             }
-        )
+        }
     }
 
     private fun updateHumidity(item: HumidityItem?) {
         if (!item.isNullOrEmpty()) {
             checkNotNull(item)
 
-            humidityValueView.apply {
+            binding.humidityValueView.apply {
                 text = getString(R.string.formatted_value, item.value)
                 setTextColor(ResourcesCompat.getColor(resources, R.color.colorSuccess, null))
             }
@@ -166,9 +147,9 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             updateMaxHumidityValue(item)
             updateHumidityChart(item)
 
-            humidityLoadingView.visibility = View.GONE
+            binding.humidityLoadingView.visibility = View.GONE
         } else {
-            humidityValueView.apply {
+            binding.humidityValueView.apply {
                 text = getString(R.string.unknown_value)
                 setTextColor(ResourcesCompat.getColor(resources, R.color.colorError, null))
             }
@@ -178,23 +159,21 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     private fun updateMinHumidityValue(item: HumidityItem) {
         if (minHumidityValue.isNaN() || minHumidityValue > item.value) {
             minHumidityValue = item.value
-            humidityMinValueView.apply {
-                text = getString(R.string.formatted_value, minHumidityValue)
-            }
+            binding.humidityMinValueView.text =
+                getString(R.string.formatted_value, minHumidityValue)
         }
     }
 
     private fun updateMaxHumidityValue(item: HumidityItem) {
         if (maxHumidityValue.isNaN() || maxHumidityValue < item.value) {
             maxHumidityValue = item.value
-            humidityMaxValueView.apply {
-                text = getString(R.string.formatted_value, maxHumidityValue)
-            }
+            binding.humidityMaxValueView.text =
+                getString(R.string.formatted_value, maxHumidityValue)
         }
     }
 
     private fun updateHumidityChart(item: HumidityItem) {
-        humidityChartView.addEntry(
+        binding.humidityChartView.addEntry(
             Entry(
                 Instant.now().minusMillis(startTime).toEpochMilli().toFloat(),
                 item.value.toFloat()
@@ -206,7 +185,7 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
         if (!item.isNullOrEmpty()) {
             checkNotNull(item)
 
-            pressureValueView.apply {
+            binding.pressureValueView.apply {
                 text = getString(R.string.formatted_value, item.value)
                 setTextColor(ResourcesCompat.getColor(resources, R.color.colorSuccess, null))
             }
@@ -215,9 +194,9 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             updateMaxPressureValue(item)
             updatePressureChart(item)
 
-            pressureLoadingView.visibility = View.GONE
+            binding.pressureLoadingView.visibility = View.GONE
         } else {
-            pressureValueView.apply {
+            binding.pressureValueView.apply {
                 text = getString(R.string.unknown_value)
                 setTextColor(ResourcesCompat.getColor(resources, R.color.colorError, null))
             }
@@ -227,23 +206,21 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     private fun updateMinPressureValue(item: PressureItem) {
         if (minPressureValue.isNaN() || minPressureValue > item.value) {
             minPressureValue = item.value
-            pressureMinValueView.apply {
-                text = getString(R.string.formatted_value, minPressureValue)
-            }
+            binding.pressureMinValueView.text =
+                getString(R.string.formatted_value, minPressureValue)
         }
     }
 
     private fun updateMaxPressureValue(item: PressureItem) {
         if (maxPressureValue.isNaN() || maxPressureValue < item.value) {
             maxPressureValue = item.value
-            pressureMaxValueView.apply {
-                text = getString(R.string.formatted_value, maxPressureValue)
-            }
+            binding.pressureMaxValueView.text =
+                getString(R.string.formatted_value, maxPressureValue)
         }
     }
 
     private fun updatePressureChart(item: PressureItem) {
-        pressureChartView.addEntry(
+        binding.pressureChartView.addEntry(
             Entry(
                 Instant.now().minusMillis(startTime).toEpochMilli().toFloat(),
                 item.value.toFloat()
@@ -255,7 +232,7 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
         if (!item.isNullOrEmpty()) {
             checkNotNull(item)
 
-            temperatureValueView.apply {
+            binding.temperatureValueView.apply {
                 text = getString(R.string.formatted_value, item.value)
                 setTextColor(ResourcesCompat.getColor(resources, R.color.colorSuccess, null))
             }
@@ -264,9 +241,9 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
             updateMaxTemperatureValue(item)
             updateTemperatureChart(item)
 
-            temperatureLoadingView.visibility = View.GONE
+            binding.temperatureLoadingView.visibility = View.GONE
         } else {
-            temperatureValueView.apply {
+            binding.temperatureValueView.apply {
                 text = getString(R.string.unknown_value)
                 setTextColor(ResourcesCompat.getColor(resources, R.color.colorError, null))
             }
@@ -276,23 +253,21 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
     private fun updateMinTemperatureValue(item: TemperatureItem) {
         if (minTemperatureValue.isNaN() || minTemperatureValue > item.value) {
             minTemperatureValue = item.value
-            temperatureMinValueView.apply {
-                text = getString(R.string.formatted_value, minTemperatureValue)
-            }
+            binding.temperatureMinValueView.text =
+                getString(R.string.formatted_value, minTemperatureValue)
         }
     }
 
     private fun updateMaxTemperatureValue(item: TemperatureItem) {
         if (maxTemperatureValue.isNaN() || maxTemperatureValue < item.value) {
             maxTemperatureValue = item.value
-            temperatureMaxValueView.apply {
-                text = getString(R.string.formatted_value, maxTemperatureValue)
-            }
+            binding.temperatureMaxValueView.text =
+                getString(R.string.formatted_value, maxTemperatureValue)
         }
     }
 
     private fun updateTemperatureChart(item: TemperatureItem) {
-        temperatureChartView.addEntry(
+        binding.temperatureChartView.addEntry(
             Entry(
                 Instant.now().minusMillis(startTime).toEpochMilli().toFloat(),
                 item.value.toFloat()

@@ -16,7 +16,7 @@ data class PressureItem(
 }
 
 fun PressureItem.isEmpty(): Boolean =
-    this@isEmpty.value.isNaN()
+    value.isNaN()
 
 fun PressureItem?.isNullOrEmpty(): Boolean =
-    this@isNullOrEmpty == null || this@isNullOrEmpty.isEmpty()
+    this == null || isEmpty()
