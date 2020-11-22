@@ -10,7 +10,6 @@ plugins {
     id("com.sherepenko.gradle.plugin-build-version") version "0.2.3"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
     kotlin("android")
-    kotlin("android.extensions")
     kotlin("kapt")
 }
 
@@ -149,7 +148,6 @@ val roomVersion = "2.2.5"
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.1")
-    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycleVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -157,6 +155,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")

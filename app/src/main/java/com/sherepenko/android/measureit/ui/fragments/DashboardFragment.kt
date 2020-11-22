@@ -15,6 +15,7 @@ import com.sherepenko.android.measureit.data.Status
 import com.sherepenko.android.measureit.data.TemperatureItem
 import com.sherepenko.android.measureit.data.isNullOrEmpty
 import com.sherepenko.android.measureit.databinding.FragmentDashboardBinding
+import com.sherepenko.android.measureit.utils.viewBinding
 import com.sherepenko.android.measureit.viewmodels.DashboardViewModel
 import java.time.Instant
 import java.util.concurrent.TimeUnit
@@ -31,9 +32,9 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     private val dashboardViewModel: DashboardViewModel by viewModel()
 
-    private val startTime: Long = Instant.now().toEpochMilli()
+    private val binding: FragmentDashboardBinding by viewBinding(FragmentDashboardBinding::bind)
 
-    private lateinit var binding: FragmentDashboardBinding
+    private val startTime: Long = Instant.now().toEpochMilli()
 
     private var minHumidityValue = Double.NaN
     private var maxHumidityValue = Double.NaN
@@ -46,8 +47,6 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding = FragmentDashboardBinding.bind(view)
 
         setupToolbar()
 
