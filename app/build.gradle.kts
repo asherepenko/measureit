@@ -164,7 +164,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.google.android.material:material:1.3.0-alpha03")
+    implementation("com.google.android.material:material:1.3.0-alpha04")
     implementation("com.google.firebase:firebase-analytics-ktx:18.0.0")
     implementation("com.google.firebase:firebase-crashlytics-ktx:17.3.0")
     implementation("com.google.firebase:firebase-perf:19.0.10")
