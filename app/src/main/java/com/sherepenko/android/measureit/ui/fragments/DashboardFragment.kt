@@ -20,10 +20,7 @@ import com.sherepenko.android.measureit.viewmodels.DashboardViewModel
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.component.KoinApiExtension
-import org.koin.core.component.bind
 
-@KoinApiExtension
 class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     companion object {
