@@ -19,11 +19,11 @@ val keystorePropertiesFile = rootProject.file("keystore.properties")
 val playstorePropertiesFile = rootProject.file("playstore.properties")
 
 android {
-    compileSdk = 30
+    compileSdk = 31
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 30
+        targetSdk = 31
         applicationId = "com.sherepenko.android.measureit"
         versionCode = buildVersion.versionCode
         versionName = buildVersion.versionName
